@@ -1,6 +1,6 @@
 '''
 	Clase que implementa la clase abstracta Reader  para el caso concreto
-	de la base de datos Tweet89 y 20ng
+	de la base de datos Reuters-21578 R52 
 
 '''
 
@@ -9,10 +9,11 @@ import json
 import numpy as np
 import preprocessing
 
-class ReaderTweet89(Reader):
+class ReaderReutersR52(Reader):
 
-	def __init__(self, path, length, embeddings):
-		self._path = path
+	def __init__(self, path_train, path_test, length, embeddings):
+		self._path_train = path_train
+		self._path_test = path_test
 		self._max_length = length
 		self._embedding_path = embeddings
 		self.read_data()
@@ -23,11 +24,23 @@ class ReaderTweet89(Reader):
 		self._cluster = []
 
 		print("Read data...")
-		with open(self._path, 'r') as json_file:
-			for line in json_file:
-				data = json.loads(line)
-				self._text.append(data['text'])
-				self._cluster.append(data['cluster'])
+
+		with open(self._path_train, 'r') as file_:
+			for line in file_:
+				tokens = line.split("\t")
+
+				self._text.append(tokens[1])
+				self._cluster.append(tokens[0])
+
+			self._text = np.array(self._text)
+			self._cluster = np.array(self._cluster)
+
+		with open(self._path_test, 'r') as file_:
+			for line in file_:
+				tokens = line.split("\t")
+
+				self._text.append(tokens[1])
+				self._cluster.append(tokens[0])
 
 			self._text = np.array(self._text)
 			self._cluster = np.array(self._cluster)
@@ -60,7 +73,7 @@ class ReaderTweet89(Reader):
 		return np.array(self._vectors)
 
 if __name__ == "__main__":
-	reader = ReaderTweet89("../data/Tweet", 50, "../crawl-300d-2M.vec")
+	reader = ReaderReutersR52("../data/r52-train-stemmed.txt", "../data/r52-test-stemmed.txt", 50, "../crawl-300d-2M.vec")
 	data = reader.get_data()
 	vectors = reader.get_vectors()
 
