@@ -11,10 +11,11 @@ if __name__ == "__main__":
 
 	#Leemos los embeddings 
 	#COMENTAR CUANDO HAGAMOS TF-IDF
-	embeddings, vocabulary = preprocessing.read_embeddings("../crawl-300d-2M.vec")
+	#embeddings, vocabulary = preprocessing.read_embeddings("../crawl-300d-2M.vec")
 
 	#Leemos los datos
-	data = ReaderTweet89("../data/Tweet", "tfidf", embeddings, vocabulary)
+	#data = ReaderTweet89("../data/Tweet", "tfidf", embeddings, vocabulary)
+	data = ReaderTweet89("../data/Tweet", "tfidf")
 	
 	tweets = data.get_vectors()
 	labels_true = data.get_clusters()
