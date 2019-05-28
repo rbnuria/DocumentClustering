@@ -40,7 +40,7 @@ def word2tfidf(data):
 	return X
 
 def read_embeddings(path_embeddings):
-	fin = io.open(embedding_path, 'r', encoding='utf-8', newline='\n', errors='ignore')
+	fin = io.open(path_embeddings, 'r', encoding='utf-8', newline='\n', errors='ignore')
 
 	#Hacemos vocabulario
 	vocabulary = {}
