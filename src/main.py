@@ -8,7 +8,7 @@ from metrics import homogenity, completeness, NMI
 
 if __name__ == "__main__":
 	#Leemos los datos
-	data = ReaderTweet89("../data/Tweet", 20, "../crawl-300d-2M.vec")
+	data = ReaderTweet89("../data/Tweet", "../crawl-300d-2M.vec")
 	tweets = data.get_vectors()
 	labels_true = data.get_clusters()
 	print(tweets.shape)

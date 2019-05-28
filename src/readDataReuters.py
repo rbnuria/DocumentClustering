@@ -11,10 +11,9 @@ import preprocessing
 
 class ReaderReutersR52(Reader):
 
-	def __init__(self, path_train, path_test, length, embeddings):
+	def __init__(self, path_train, path_test, embeddings):
 		self._path_train = path_train
 		self._path_test = path_test
-		self._max_length = length
 		self._embedding_path = embeddings
 		self.read_data()
 		self.prepare_data()
@@ -54,7 +53,7 @@ class ReaderReutersR52(Reader):
 			self._data.append(preprocessing.tokenize(sentence))
 
 		#Padding-truncate
-		self._data = preprocessing.padding_truncate(self._data, self._max_length)
+		#self._data = preprocessing.padding_truncate(self._data, self._max_length)
 
 		#Pasamos a embeddings
 		self._vectors = preprocessing.word2embeddings(self._data, self._embedding_path)
