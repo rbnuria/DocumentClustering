@@ -56,11 +56,11 @@ def word2embeddings(data, embedding_path):
 		
 		for word in sentence:
 			if word == 0:
-				sentence_embedding.append(np.array(embeddings_matrix[vocabulary['PADDING']]))
+				sentence_embedding.append(np.array(embeddings_matrix[vocabulary['PADDING']]).astype(np.float))
 			elif word in vocabulary:
-				sentence_embedding.append(np.array(embeddings_matrix[vocabulary[word]]))
+				sentence_embedding.append(np.array(embeddings_matrix[vocabulary[word]]).astype(np.float))
 			else:
-				sentence_embedding.append(np.array(embeddings_matrix[vocabulary['UNKOWN']]))
+				sentence_embedding.append(np.array(embeddings_matrix[vocabulary['UNKOWN']]).astype(np.float))
 
 		sentence_embedding = np.array(sentence_embedding)
 		vector_medias = sentence_embedding.mean(1)
