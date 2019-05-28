@@ -62,15 +62,13 @@ def word2embeddings(data, embedding_path):
 			else:
 				sentence_embedding.append(np.array(embeddings_matrix[vocabulary['UNKOWN']]))
 
-		data_embeddings.append(sentence_embedding)
+		sentence_embedding = np.array(sentence_embedding)
+		vector_medias = sentence_embedding.mean(1)
+		vector_medias = np.array(vector_medias)
 
+		data_embeddings.append(vector_medias)
 
 	data_embeddings = np.array(data_embeddings)
 	print(data_embeddings.shape)
 
-	vector_medias = data_embeddings.mean(1)
-	vector_medias = np.array(vector_medias)
-
-	print(vector_medias.shape)
-
-	return vector_medias
+	return data_embeddings
