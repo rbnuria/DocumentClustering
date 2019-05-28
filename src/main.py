@@ -15,7 +15,7 @@ if __name__ == "__main__":
 	print("Etiquetas reales: ", labels_true)
 
 	#Aplicamos kmeans
-	kmeans = KMeans(n_clusters = 89, random_state = 1234567, n_init = 100, max_iter = 5000).fit(tweets)
+	kmeans = KMeans(n_clusters = 89, random_state = 1234567, n_init = 25, max_iter = 500).fit(tweets)
 	print("Etiquetas predichas: ", kmeans.labels_)
 	nmi = NMI(labels_true, kmeans.labels_)
 	print(nmi)
