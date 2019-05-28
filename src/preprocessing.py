@@ -39,7 +39,7 @@ def word2tfidf(data):
 
 	return X
 
-def word2embeddings(data, embedding_path):
+def read_embeddings(path_embeddings):
 	fin = io.open(embedding_path, 'r', encoding='utf-8', newline='\n', errors='ignore')
 
 	#Hacemos vocabulario
@@ -59,6 +59,13 @@ def word2embeddings(data, embedding_path):
 		if(len(tokens[1:]) == 300):
 			vocabulary[tokens[0]] = len(vocabulary)
 			embeddings_matrix.append(np.array(tokens[1:]))
+
+	return (embeddings_matrix, vocabulary)
+
+def word2embeddings(data, embedding, vocab):
+	
+	embeddings_matrix = embeddings_matrix
+	vocabulary = vocab
 
 	print("Sustituyendo palabras por su embedding correspondiente ...")
 	data_embeddings = []

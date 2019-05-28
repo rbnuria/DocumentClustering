@@ -5,10 +5,16 @@
 from sklearn.cluster import KMeans
 from readDataTweet89 import *
 from metrics import homogenity, completeness, NMI
+import preprocessing
 
 if __name__ == "__main__":
+
+	#Leemos los embeddings
+	embeddings, vocabulary = preprocessing.read_embeddings("../crawl-300d-2M.vec")
+
 	#Leemos los datos
-	data = ReaderTweet89("../data/Tweet", "../crawl-300d-2M.vec", "tf-idf")
+	data = ReaderTweet89("../data/Tweet", "tf-idf", embeddings, vocabulary,)
+	
 	tweets = data.get_vectors()
 	labels_true = data.get_clusters()
 	print(tweets.shape)

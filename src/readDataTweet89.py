@@ -11,9 +11,10 @@ import preprocessing
 
 class ReaderTweet89(Reader):
 
-	def __init__(self, path, embeddings, type):
+	def __init__(self, path, type, embeddings = None, vocab = None):
 		self._path = path
-		self._embedding_path = embeddings
+		self._embedding = embeddings
+		self._vocabulary = vocab
 		self.read_data()
 		self.prepare_data()
 
@@ -44,7 +45,7 @@ class ReaderTweet89(Reader):
 
 		#Pasamos a embeddings
 		if type == "embeddings":
-			self._vectors = preprocessing.word2embeddings(self._data, self._embedding_path)
+			self._vectors = preprocessing.word2embeddings(self._data, self._embedding, self._vocabulary)
 		else:
 			self._vectors = preprocessing.word2tfidf(self._data)
 
