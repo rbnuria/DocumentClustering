@@ -13,6 +13,7 @@ class ReaderTweet89(Reader):
 
 	def __init__(self, path, type, embeddings = None, vocab = None):
 		self._path = path
+		self._type = type
 		self._embedding = embeddings
 		self._vocabulary = vocab
 		self.read_data()
@@ -44,7 +45,7 @@ class ReaderTweet89(Reader):
 		#self._data = preprocessing.padding_truncate(self._data, self._max_length)
 
 		#Pasamos a embeddings
-		if type == "embeddings":
+		if self._type == "embeddings":
 			self._vectors = preprocessing.word2embeddings(self._data, self._embedding, self._vocabulary)
 		else:
 			self._vectors = preprocessing.word2tfidf(self._data)
