@@ -63,7 +63,7 @@ def read_embeddings(path_embeddings):
 
 	return (embeddings_matrix, vocabulary)
 
-def word2embeddings(data, embedding, vocab):
+def word2embeddings(data, embedding, vocab, concatenate):
 	
 	embeddings_matrix = embedding
 	vocabulary = vocab

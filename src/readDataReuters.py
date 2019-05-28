@@ -11,10 +11,13 @@ import preprocessing
 
 class ReaderReutersR52(Reader):
 
-	def __init__(self, path_train, path_test, embeddings):
+	def __init__(self, path_train, path_test, type_, embeddings = None, vocab = None, concatenate = False):
 		self._path_train = path_train
 		self._path_test = path_test
-		self._embedding_path = embeddings
+		self._type = type_
+		self._concatenate = concatenate
+		self._embedding = embeddings
+		self._vocabulary = vocab
 		self.read_data()
 		self.prepare_data()
 
@@ -46,17 +49,17 @@ class ReaderReutersR52(Reader):
 
 	def prepare_data(self):
 		print("Prepare data...")
-		self._data = []
-
-		#Tokenizamos
-		for sentence in self._text:
-			self._data.append(preprocessing.tokenize(sentence))
-
-		#Padding-truncate
-		#self._data = preprocessing.padding_truncate(self._data, self._max_length)
 
 		#Pasamos a embeddings
-		self._vectors = preprocessing.word2embeddings(self._data, self._embedding_path)
+		if self._type == "embeddings":
+			self._data = []
+
+			for sentence in self._text:
+				self._data.append(preprocessing.tokenize(sentence))
+
+			self._vectors = np.array(preprocessing.word2embeddings(self._data, self._embedding, self._vocabulary, self._concatenate))
+		else:
+			self._vectors = preprocessing.word2tfidf(self._text)
 
 
 	def get_text(self):
