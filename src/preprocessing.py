@@ -56,6 +56,7 @@ def word2embeddings(data, embedding_path):
 		
 		for word in sentence:
 			if word == 0:
+				pass
 				#sentence_embedding.append(np.array(embeddings_matrix[vocabulary['PADDING']]).astype(np.float))
 			elif word in vocabulary:
 				sentence_embedding.append(np.array(embeddings_matrix[vocabulary[word]]).astype(np.float))
