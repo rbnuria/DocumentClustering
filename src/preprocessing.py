@@ -5,6 +5,7 @@
 from nltk import word_tokenize
 import io
 import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 def tokenize(text):
 	return word_tokenize(text)
@@ -27,6 +28,16 @@ def padding_truncate(sentences, max_length):
 
 	return sentences
 
+
+def word2tfidf(data):
+	#Inicializamos tfidf
+	vectorizer = TfidfVectorizer()
+
+	X = vectorizer.fit_transform(corpus)
+
+	print(X.shape)
+
+	return X
 
 def word2embeddings(data, embedding_path):
 	fin = io.open(embedding_path, 'r', encoding='utf-8', newline='\n', errors='ignore')
