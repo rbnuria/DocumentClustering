@@ -40,9 +40,12 @@ class ReaderTweet89(Reader):
 		#Pasamos a embeddings
 		if self._type == "embeddings":
 			self._data = []
-
+	
 			for sentence in self._text:
 				self._data.append(preprocessing.tokenize(sentence))
+
+			if self._concatenate:
+				self._data = preprocessing.padding_truncate(self._data, self._max_length)
 
 			self._vectors = np.array(preprocessing.word2embeddings(self._data, self._embedding, self._vocabulary, self._concatenate))
 		else:
