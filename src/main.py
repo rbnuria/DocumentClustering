@@ -14,7 +14,14 @@ if __name__ == "__main__":
 	embeddings, vocabulary = preprocessing.read_embeddings("../crawl-300d-2M.vec")
 
 	#Leemos los datos
-	data = ReaderTweet89("../data/Tweet", "tfidf", embeddings, vocabulary, True)
+
+	#Embeddings-concatenando
+	data = ReaderTweet89("../data/Tweet", "embeddings", embeddings, vocabulary, True)
+
+	#Embeddings-media
+	#data = ReaderTweet89("../data/Tweet", "embeddings", embeddings, vocabulary)
+
+	#tf-idf
 	#data = ReaderTweet89("../data/Tweet", "tfidf")
 	
 	tweets = data.get_vectors()
