@@ -3,7 +3,6 @@
 '''
 
 from sklearn.cluster import KMeans
-from sklearn.descomposition import LatentDirichletAllocation as LDA
 from readDataTweet89 import *
 from metrics import homogenity, completeness, NMI
 
@@ -19,6 +18,5 @@ if __name__ == "__main__":
 	kmeans = KMeans(n_clusters = 89, random_state = 1234567, n_init = 100, max_iter = 5000).fit(tweets)
 	print("Etiquetas predichas: ", kmeans.labels_)
 	nmi = NMI(labels_true, kmeans.labels_)
-	#lda = LDA(n_componentes = 89).fit(tweets)
 	print(nmi)
 
