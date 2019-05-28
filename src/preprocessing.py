@@ -33,7 +33,7 @@ def word2tfidf(data):
 	#Inicializamos tfidf
 	vectorizer = TfidfVectorizer()
 
-	X = vectorizer.fit_transform(corpus)
+	X = vectorizer.fit_transform(data)
 
 	print(X.shape)
 
