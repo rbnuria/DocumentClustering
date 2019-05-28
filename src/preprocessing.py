@@ -73,21 +73,41 @@ def word2embeddings(data, embedding, vocab):
 	for sentence in data:
 		sentence_embedding = []
 		
-		for word in sentence:
-			if word == 0:
-				pass
-				#sentence_embedding.append(np.array(embeddings_matrix[vocabulary['PADDING']]).astype(np.float))
-			elif word in vocabulary:
-				sentence_embedding.append(np.array(embeddings_matrix[vocabulary[word]]).astype(np.float))
-			else:
-				#sentence_embedding.append(np.array(embeddings_matrix[vocabulary['UNKOWN']]).astype(np.float))
-				pass
+		if concatenate:
 
-		sentence_embedding = np.array(sentence_embedding)
-		vector_medias = sentence_embedding.mean(0)
-		vector_medias = np.array(vector_medias)
+			for word in sentence:
+				if word == 0:
+					pass
+					#sentence_embedding.append(np.array(embeddings_matrix[vocabulary['PADDING']]).astype(np.float))
+				elif word in vocabulary:
+					sentence_embedding.extend(np.array(embeddings_matrix[vocabulary[word]]).astype(np.float))
+				else:
+					#sentence_embedding.append(np.array(embeddings_matrix[vocabulary['UNKOWN']]).astype(np.float))
+					pass
 
-		data_embeddings.append(vector_medias)
+			sentence_embedding = np.array(sentence_embedding)
+			#vector_medias = sentence_embedding.mean(0)
+			#vector_medias = np.array(vector_medias)
+
+			data_embeddings.append(sentence_embedding)
+
+		else:
+			for word in sentence:
+				if word == 0:
+					pass
+					#sentence_embedding.append(np.array(embeddings_matrix[vocabulary['PADDING']]).astype(np.float))
+				elif word in vocabulary:
+					sentence_embedding.append(np.array(embeddings_matrix[vocabulary[word]]).astype(np.float))
+				else:
+					#sentence_embedding.append(np.array(embeddings_matrix[vocabulary['UNKOWN']]).astype(np.float))
+					pass
+
+			sentence_embedding = np.array(sentence_embedding)
+			vector_medias = sentence_embedding.mean(0)
+			vector_medias = np.array(vector_medias)
+
+			data_embeddings.append(vector_medias)
+
 
 	data_embeddings = np.array(data_embeddings)
 	print(data_embeddings.shape)

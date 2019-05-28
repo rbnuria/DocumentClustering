@@ -11,9 +11,10 @@ import preprocessing
 
 class ReaderTweet89(Reader):
 
-	def __init__(self, path, type, embeddings = None, vocab = None):
+	def __init__(self, path, type_, embeddings = None, vocab = None, concatenate = False):
 		self._path = path
-		self._type = type
+		self._type = type_
+		self._concatenate = concatenate
 		self._embedding = embeddings
 		self._vocabulary = vocab
 		self.read_data()
@@ -43,7 +44,7 @@ class ReaderTweet89(Reader):
 			for sentence in self._text:
 				self._data.append(preprocessing.tokenize(sentence))
 
-			self._vectors = np.array(preprocessing.word2embeddings(self._data, self._embedding, self._vocabulary))
+			self._vectors = np.array(preprocessing.word2embeddings(self._data, self._embedding, self._vocabulary, self._concatenate))
 		else:
 			self._vectors = preprocessing.word2tfidf(self._text)
 
