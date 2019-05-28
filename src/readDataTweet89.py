@@ -35,21 +35,17 @@ class ReaderTweet89(Reader):
 
 	def prepare_data(self):
 		print("Prepare data...")
-		self._data = []
-
-		#Tokenizamos
-		for sentence in self._text:
-			self._data.append(preprocessing.tokenize(sentence))
-
-		#Padding-truncate
-		#self._data = preprocessing.padding_truncate(self._data, self._max_length)
 
 		#Pasamos a embeddings
 		if self._type == "embeddings":
-			self._vectors = preprocessing.word2embeddings(self._data, self._embedding, self._vocabulary)
-		else:
-			self._vectors = preprocessing.word2tfidf(self._data)
+			self._data = []
 
+			for sentence in self._text:
+				self._data.append(preprocessing.tokenize(sentence))
+
+			self._vectors = np.array(preprocessing.word2embeddings(self._data, self._embedding, self._vocabulary))
+		else:
+			self._vectors = preprocessing.word2tfidf(self._text)
 
 	def get_text(self):
 		return self._text
@@ -57,11 +53,8 @@ class ReaderTweet89(Reader):
 	def get_clusters(self):
 		return self._cluster
 
-	def get_data(self):
-		return self._data
-
 	def get_vectors(self):
-		return np.array(self._vectors)
+		return self._vectors
 
 if __name__ == "__main__":
 	reader = ReaderTweet89("../data/Tweet", 50, "../crawl-300d-2M.vec")

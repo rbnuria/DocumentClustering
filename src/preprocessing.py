@@ -35,6 +35,7 @@ def word2tfidf(data):
 
 	X = vectorizer.fit_transform(data)
 
+	print("Vectorizer")
 	print(X.shape)
 
 	return X
