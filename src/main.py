@@ -14,7 +14,7 @@ if __name__ == "__main__":
 	embeddings, vocabulary = preprocessing.read_embeddings("../crawl-300d-2M.vec")
 
 	#Leemos los datos
-	data = ReaderTweet89("../data/Tweet", "embeddings", embeddings, vocabulary)
+	data = ReaderTweet89("../data/Tweet", "tfidf", embeddings, vocabulary)
 	
 	tweets = data.get_vectors()
 	labels_true = data.get_clusters()
