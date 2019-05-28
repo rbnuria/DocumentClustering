@@ -64,7 +64,7 @@ def read_embeddings(path_embeddings):
 
 def word2embeddings(data, embedding, vocab):
 	
-	embeddings_matrix = embeddings_matrix
+	embeddings_matrix = embedding
 	vocabulary = vocab
 
 	print("Sustituyendo palabras por su embedding correspondiente ...")
