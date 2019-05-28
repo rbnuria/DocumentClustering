@@ -82,6 +82,7 @@ def word2embeddings(data, embedding, vocab, concatenate):
 				else:
 					sentence_embedding.extend(np.array(embeddings_matrix[vocabulary['UNKOWN']]).astype(np.float))
 
+			sentence_embedding = np.array(sentence_embedding)
 			data_embeddings.append(sentence_embedding)
 
 		else:
