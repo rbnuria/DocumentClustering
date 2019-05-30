@@ -23,9 +23,6 @@ class ReaderTweet89(Reader):
 	def read_data(self):
 		self._text = []
 
-		print(self._text[1])
-		print(self._text[2])
-
 		self._cluster = []
 
 		print("Read data...")
@@ -37,6 +34,9 @@ class ReaderTweet89(Reader):
 
 			self._text = np.array(self._text)
 			self._cluster = np.array(self._cluster)
+
+		print(self._text[1])
+		print(self._text[2])
 
 	def prepare_data(self):
 		print("Prepare data...")
