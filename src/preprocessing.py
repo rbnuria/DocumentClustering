@@ -43,8 +43,19 @@ def word2tfidf(data):
 
 	return X
 
+def get_top_n_words(corpus, n=None):
+    vec = CountVectorizer().fit(corpus)
+    bag_of_words = vec.transform(corpus)
+    sum_words = bag_of_words.sum(axis=0) 
+    words_freq = [(word, sum_words[0, idx]) for word, idx in     vec.vocabulary_.items()]
+    words_freq =sorted(words_freq, key = lambda x: x[1], reverse=True)
+    return words_freq[:n]
+
 def apply_stemmer_stopword(data):
 	ps = PorterStemmer()
+
+	data = get_top_n_words(data, 2000)
+	data = data[1,:]
 
 	stemmed_data = []
 
