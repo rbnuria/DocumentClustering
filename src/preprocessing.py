@@ -59,9 +59,12 @@ def apply_stemmer_stopword(data):
 
 	stemmed_data = []
 
+	common_words = get_top_n_words(data, 2000)
+
+
 	for sentence in data:
 		sentence_tokenized = delete_stopwords_sentence(word_tokenize(sentence))
-		sentence_tokenized = delete_uncommon_sentence(sentence_tokenized)
+		sentence_tokenized = delete_uncommon_sentence(sentence_tokenized, common_words)
 		new_sentence = ""
 		for word in sentence_tokenized:
 			new_sentence += " " + ps.stem(word)
@@ -72,10 +75,9 @@ def apply_stemmer_stopword(data):
 
 	return stemmed_data
 
-def delete_uncommon_sentence(sentence):
-	common_words = get_top_n_words(data, 2000)
+def delete_uncommon_sentence(sentence, common):
 
-	new_sentence = [word for word in tokenized_sentence if word in common_words]
+	new_sentence = [word for word in tokenized_sentence if word in common]
 
 	return new_sentence
 
