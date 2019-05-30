@@ -56,9 +56,6 @@ class ReaderReutersR52(Reader):
 
 			self._data = preprocessing.delete_stopwords(self._data)
 
-			print(self._data[1])
-			print(self._data[2])
-
 			self._vectors = np.array(preprocessing.word2embeddings(self._data, self._embedding, self._vocabulary, self._concatenate))
 		else:
 			self._text = preprocessing.apply_stemmer_stopword(self._text)

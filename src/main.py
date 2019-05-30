@@ -19,14 +19,13 @@ if __name__ == "__main__":
 	#COMENTAR CUANDO HAGAMOS TF-IDF
 	embeddings, vocabulary = pre.read_embeddings("../crawl-300d-2M.vec")
 
-
 	#Leemos los datos
 
 	#Embeddings-concatenando
 	#data = ReaderTweet89("../data/Tweet", "embeddings", embeddings, vocabulary, True)
 
 	#Embeddings-media
-	data = ReaderReutersR52("../data/20ng-train-all-terms.txt", "../data/20ng-test-all-terms.txt","embeddings", embeddings, vocabulary)
+	data = ReaderTweet89("../data/20ng.txt", "../data/20ng-test-all-terms.txt","embeddings", embeddings, vocabulary)
 	#data = ReaderReutersR52("../data/r52-train-all-terms.txt", "../data/r52-test-all-terms.txt", "embeddings", embeddings, vocabulary)
 
 	#tf-idf
@@ -41,15 +40,10 @@ if __name__ == "__main__":
 	print("Etiquetas reales: ", labels_true)
 
 	#Aplicamos kmeans
-	#kmeans = KMeans(n_clusters = 20, random_state = 1234567, n_init = 2, max_iter = 100).fit(tweets)
+	kmeans = KMeans(n_clusters = 52, random_state = 1234567, n_init = 5, max_iter = 100).fit(tweets)
 
-	kclusterer = KMeansClusterer(20, distance=nltk.cluster.util.cosine_distance, repeats=10)
-	assigned_clusters = kclusterer.cluster(tweets, assign_clusters=True)
-
-	#agglomerative = AgglomerativeClustering(n_clusters = 20, affinity = "cosine", linkage = "complete").fit(tweets)
-
-	print("Etiquetas predichas: ", assigned_clusters)
+	print("Etiquetas predichas: ", kmeans.labels_)
 	
-	nmi = NMI(labels_true, assigned_clusters)
+	nmi = NMI(labels_true, kmeans.labels_)
 	print(nmi)
 
