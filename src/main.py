@@ -4,6 +4,7 @@
 
 from sklearn.cluster import KMeans
 from readDataTweet89 import *
+from readDataReuters import *
 from metrics import homogenity, completeness, NMI
 import preprocessing
 
@@ -16,15 +17,16 @@ if __name__ == "__main__":
 	#Leemos los datos
 
 	#Embeddings-concatenando
-	data = ReaderTweet89("../data/Tweet", "embeddings", embeddings, vocabulary, True)
+	#data = ReaderTweet89("../data/Tweet", "embeddings", embeddings, vocabulary, True)
 
 	#Embeddings-media
 	#data = ReaderTweet89("../data/Tweet", "embeddings", embeddings, vocabulary)
+	data = ReaderReutersR52("../data/r52-train-stemmed.txt", "../data/r52-test-stemmed.txt", "embeddings", embeddings, vocabulary)
 
 	#tf-idf
 	#data = ReaderTweet89("../data/Tweet", "tfidf")
 	
-	tweets = data.get_vectors()
+	tweets = data.get_vectors(), 
 	labels_true = data.get_clusters()
 	print(tweets.shape)
 	print("Etiquetas reales: ", labels_true)
