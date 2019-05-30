@@ -38,7 +38,7 @@ def word2tfidf(data):
 
 	X = vectorizer.fit_transform(data)
 
-	return X
+	return X.toarray()
 
 def get_top_n_words(corpus, n=None):
     vec = CountVectorizer().fit(corpus)
