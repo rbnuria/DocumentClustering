@@ -37,12 +37,14 @@ if __name__ == "__main__":
 	f = open("tweets.csv", "wb")
 	writer = csv.writer(f)
 
-	writer.write(tweets)
+	for t in tweets:
+		writer.write_row(t)
 
 	f1 = open("labels.csv", "wb")
 	writer = csv.writer(f1)
 
-	writer.write(labels_true)
+	for l in labels_true:
+		writer.write_row(l)
 
 	#tweets = preprocessing.normalize(tweets)
 
