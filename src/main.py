@@ -2,7 +2,7 @@
 	Clase de prueba de los algoritmos de clustering
 '''
 
-from sklearn.cluster import KMeans
+from sklearn.cluster import KMeans, AgglomerativeClustering
 from readDataTweet89 import *
 from readDataReuters import *
 from metrics import homogenity, completeness, NMI
@@ -51,8 +51,10 @@ if __name__ == "__main__":
 	#Aplicamos kmeans
 	kmeans = KMeans(n_clusters = 20, random_state = 1234567, n_init = 10, max_iter = 100).fit(tweets)
 
-	print("Etiquetas predichas: ", kmeans.labels_)
+	agglomerative = AgglomerativeClustering(n_clusters = 20, affinity = "cosine", linkage = "complete")
+
+	print("Etiquetas predichas: ", agglomerative.labels_)
 	
-	nmi = NMI(labels_true, kmeans.labels_)
+	nmi = NMI(labels_true, agglomerative.labels_)
 	print(nmi)
 

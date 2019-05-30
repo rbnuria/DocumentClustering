@@ -38,17 +38,7 @@ def word2tfidf(data):
 
 	X = vectorizer.fit_transform(data)
 
-	devolver = []
-	
-	for col in X.nonzero()[1]:
-		document = []
-		
-		for i in range(0, len(data)):
-			document.append(X[i, col])
-
-		devolver.append(document)
-
-	return devolver
+	return X
 
 def get_top_n_words(corpus, n=None):
     vec = CountVectorizer().fit(corpus)
