@@ -32,7 +32,6 @@ class ReaderReutersR52(Reader):
 				tokens = line.split("\t")
 
 				self._text.append(tokens[1])
-				print(tokens[1])
 				self._cluster.append(tokens[0])
 
 
