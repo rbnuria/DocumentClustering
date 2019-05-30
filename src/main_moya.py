@@ -41,6 +41,10 @@ if __name__ == "__main__":
 		print(tweets.shape)
 		print("Etiquetas reales: ", labels_true)
 
+		t2 = time.time()
+
+		t3 = time.time()
+
 		#kmeans
 		#1234567
 		kmeans = KMeans(n_clusters = 52, random_state = seeds[i], n_init = 10, max_iter = 300).fit(tweets)
@@ -56,7 +60,8 @@ if __name__ == "__main__":
 		print("Etiquetas predichas K: ", kmeans.labels_)
 		nmi = NMI(labels_true, kmeans.labels_)
 		print("nmi: ", nmi)
-		t2 = time.time()
-		print("tiempo: ", t2-t1)
+		t4 = time.time()
+		print("tiempo 1: ", t2-t1)
+		print("tiempo 2: ", t4-t3)
 		
 
