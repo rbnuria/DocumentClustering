@@ -39,11 +39,10 @@ def word2tfidf(data):
 	X = vectorizer.fit_transform(data)
 
 
-
 	for col in X.nonzero()[1]:
 		document = []
 		
-		for i in range(0, data.shape[0]):
+		for i in range(0, len(data)):
 			document.append(X[i, col])
 
 		devolver.append(document)
