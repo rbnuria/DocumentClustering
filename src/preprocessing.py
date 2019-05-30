@@ -6,7 +6,7 @@ from nltk import word_tokenize
 from nltk.stem import PorterStemmer
 import io
 import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from nltk.corpus import stopwords
 
 
