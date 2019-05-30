@@ -3,6 +3,7 @@
 '''
 
 from nltk import word_tokenize
+from nltk.stem import PorterStemmer
 import io
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -41,6 +42,22 @@ def word2tfidf(data):
 	print(X.shape)
 
 	return X
+
+def apply_stemmer(data):
+	ps = PorterStemmer()
+
+	stemmed_data = []
+
+	for sentence in data:
+		sentence_tokenized = word_tokenize(sentence)
+		new_sentence = ""
+		for word in sentence_tokenized:
+			new_sentence += " " + ps.stem(word)
+
+		new_sentence += "\n"
+
+	stemmed_data.append(new_sentence)
+
 
 def delete_stopwords(tokenized_data):
 	stop_words = stopwords.words('english')
