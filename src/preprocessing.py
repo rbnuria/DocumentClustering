@@ -59,7 +59,7 @@ def apply_stemmer_stopword(data):
 
 	stemmed_data = []
 
-	common_words = get_top_n_words(data, 2000)
+	common_words = get_top_n_words(data, 5000)
 
 
 	for sentence in data:
