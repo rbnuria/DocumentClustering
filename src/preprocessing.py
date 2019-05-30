@@ -56,7 +56,7 @@ def apply_stemmer_stopword(data):
 
 		new_sentence += "\n"
 
-	stemmed_data.append(new_sentence)
+		stemmed_data.append(new_sentence)
 
 	return stemmed_data
 
