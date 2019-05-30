@@ -53,8 +53,8 @@ if __name__ == "__main__":
 
 	#agglomerative = AgglomerativeClustering(n_clusters = 20, affinity = "cosine", linkage = "complete").fit(tweets)
 
-	print("Etiquetas predichas: ", agglomerative.labels_)
+	print("Etiquetas predichas: ", kmeans.labels_)
 	
-	nmi = NMI(labels_true, agglomerative.labels_)
+	nmi = NMI(labels_true, kmeans.labels_)
 	print(nmi)
 
