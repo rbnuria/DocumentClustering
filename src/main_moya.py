@@ -22,7 +22,7 @@ if __name__ == "__main__":
 	for i in range(10):
 		t1 = time.time()
 
-		embeddings, vocabulary = preprocessing.read_embeddings("../crawl-300d-2M.vec")
+		#embeddings, vocabulary = preprocessing.read_embeddings("../crawl-300d-2M.vec")
 
 		#Leemos los datos
 
@@ -37,7 +37,7 @@ if __name__ == "__main__":
 		#data = ReaderTweet89("../data/20ng.txt", "tfidf")
 		data = ReaderReutersR52("../data/r52-train-all-terms.txt", "../data/r52-test-all-terms.txt","tfidf")
 
-			
+
 		tweets = data.get_vectors()
 		labels_true = data.get_clusters()
 		print(tweets.shape)
