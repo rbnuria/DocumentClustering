@@ -42,7 +42,7 @@ def word2tfidf(data):
 
 	for col in X.nonzero()[1]:
 		document = []
-		for i in range(0, data.shape[0])
+		for i in range(0, data.shape[0]):
 			document.append(X[i, col])
     	
     	devolver.append(document)
