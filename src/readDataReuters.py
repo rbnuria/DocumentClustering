@@ -32,10 +32,9 @@ class ReaderReutersR52(Reader):
 				tokens = line.split("\t")
 
 				self._text.append(tokens[1])
+				print(tokens[1])
 				self._cluster.append(tokens[0])
 
-			self._text = np.array(self._text)
-			self._cluster = np.array(self._cluster)
 
 		with open(self._path_test, 'r') as file_:
 			for line in file_:
@@ -44,8 +43,8 @@ class ReaderReutersR52(Reader):
 				self._text.append(tokens[1])
 				self._cluster.append(tokens[0])
 
-			self._text = np.array(self._text)
-			self._cluster = np.array(self._cluster)
+		self._text = np.array(self._text)
+		self._cluster = np.array(self._cluster)
 
 	def prepare_data(self):
 		print("Prepare data...")
