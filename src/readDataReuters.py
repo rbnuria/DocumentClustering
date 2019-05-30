@@ -29,8 +29,7 @@ class ReaderReutersR52(Reader):
 
 		with open(self._path_train, 'r') as file_:
 			for line in file_:
-				tokens = line.split("\t")
-
+				tokens = line.split("\t")		
 				self._text.append(tokens[1])
 				self._cluster.append(sum(ord(i) for i in tokens[0]))
 
@@ -57,8 +56,12 @@ class ReaderReutersR52(Reader):
 
 			self._data = preprocessing.delete_stopwords(self._data)
 
+			print(self._data[1])
+			print(self._data[2])
+
 			self._vectors = np.array(preprocessing.word2embeddings(self._data, self._embedding, self._vocabulary, self._concatenate))
 		else:
+			self._text = preprocessing.apply_stemmer_stopword(self._text)
 			self._vectors = preprocessing.word2tfidf(self._text)
 
 
