@@ -31,11 +31,13 @@ if __name__ == "__main__":
 
 		#Embeddings-media
 		#data = ReaderTweet89("../data/20ng.txt", "embeddings", embeddings, vocabulary)
-		data = ReaderReutersR52("../data/r52-train-all-terms.txt", "../data/r52-test-all-terms.txt", "embeddings", embeddings=embeddings, vocab = vocabulary)
+		d#ata = ReaderReutersR52("../data/r52-train-all-terms.txt", "../data/r52-test-all-terms.txt", "embeddings", embeddings=embeddings, vocab = vocabulary)
 
 		#tf-idf
 		#data = ReaderTweet89("../data/20ng.txt", "tfidf")
-		
+		data = ReaderReutersR52("../data/r52-train-all-terms.txt", "../data/r52-test-all-terms.txt","tfidf")
+
+			
 		tweets = data.get_vectors()
 		labels_true = data.get_clusters()
 		print(tweets.shape)
