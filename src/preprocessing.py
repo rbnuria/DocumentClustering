@@ -45,7 +45,7 @@ def word2tfidf(data):
 def delete_stopwords(tokenized_data):
 	stop_words = stopwords.words('english')
 
-	new_data = [word for word in tokenized_words if word not in stop_words]
+	new_data = [word for word in tokenized_data if word not in stop_words]
 
 	return new_data
 
