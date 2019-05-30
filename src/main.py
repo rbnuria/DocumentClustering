@@ -3,6 +3,7 @@
 '''
 
 from sklearn.cluster import KMeans, AgglomerativeClustering
+from nltk.cluster import KMeansClusterer
 from readDataTweet89 import *
 from readDataReuters import *
 from metrics import homogenity, completeness, NMI
@@ -32,31 +33,20 @@ if __name__ == "__main__":
 	tweets = data.get_vectors()
 	labels_true = data.get_clusters()
 
-
-
-	f = open("tweets.csv", "wb")
-	writer = csv.writer(f)
-
-	for t in tweets:
-		writer.write_row(t)
-
-	f1 = open("labels.csv", "wb")
-	writer = csv.writer(f1)
-
-	for l in labels_true:
-		writer.write_row(l)
-
 	#tweets = preprocessing.normalize(tweets)
 
 	print("Etiquetas reales: ", labels_true)
 
 	#Aplicamos kmeans
-	kmeans = KMeans(n_clusters = 20, random_state = 1234567, n_init = 2, max_iter = 100).fit(tweets)
+	#kmeans = KMeans(n_clusters = 20, random_state = 1234567, n_init = 2, max_iter = 100).fit(tweets)
+
+	kclusterer = KMeansClusterer(20, distance=nltk.cluster.util.cosine_distance, repeats=10)
+	assigned_clusters = kclusterer.cluster(tweets, assign_clusters=True)
 
 	#agglomerative = AgglomerativeClustering(n_clusters = 20, affinity = "cosine", linkage = "complete").fit(tweets)
 
-	print("Etiquetas predichas: ", kmeans.labels_)
+	print("Etiquetas predichas: ", assigned_clusters)
 	
-	nmi = NMI(labels_true, kmeans.labels_)
+	nmi = NMI(labels_true, assigned_clusters)
 	print(nmi)
 

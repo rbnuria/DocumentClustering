@@ -67,11 +67,3 @@ class ReaderTweet89(Reader):
 
 	def get_vectors(self):
 		return self._vectors
-
-if __name__ == "__main__":
-	reader = ReaderTweet89("../data/Tweet", 50, "../crawl-300d-2M.vec")
-	data = reader.get_data()
-	vectors = reader.get_vectors()
-
-	print(data[0])
-	print(vectors[0])
