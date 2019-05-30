@@ -6,7 +6,7 @@ from sklearn.cluster import KMeans
 from readDataTweet89 import *
 from readDataReuters import *
 from metrics import homogenity, completeness, NMI
-import preprocessing
+import preprocessing as pre
 import csv
 from sklearn import preprocessing
 
@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
 	#Leemos los embeddings 
 	#COMENTAR CUANDO HAGAMOS TF-IDF
-	embeddings, vocabulary = preprocessing.read_embeddings("../crawl-300d-2M.vec")
+	embeddings, vocabulary = pre.read_embeddings("../crawl-300d-2M.vec")
 
 	#Leemos los datos
 
