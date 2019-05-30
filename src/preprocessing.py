@@ -77,7 +77,7 @@ def apply_stemmer_stopword(data):
 
 def delete_uncommon_sentence(sentence, common):
 
-	new_sentence = [word for word in tokenized_sentence if word in common]
+	new_sentence = [word for word in sentence if word in common]
 
 	return new_sentence
 
