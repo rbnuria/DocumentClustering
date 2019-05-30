@@ -3,6 +3,7 @@
 '''
 
 from sklearn.cluster import KMeans, AgglomerativeClustering
+import nltk
 from nltk.cluster import KMeansClusterer
 from readDataTweet89 import *
 from readDataReuters import *
