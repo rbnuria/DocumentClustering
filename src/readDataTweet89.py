@@ -34,10 +34,7 @@ class ReaderTweet89(Reader):
 
 			self._text = np.array(self._text)
 			self._cluster = np.array(self._cluster)
-
-		print(self._text[1])
-		print(self._text[2])
-
+			
 	def prepare_data(self):
 		print("Prepare data...")
 
@@ -65,8 +62,6 @@ class ReaderTweet89(Reader):
 			self._text = preprocessing.apply_stemmer_stopword(self._text)
 			self._vectors = preprocessing.word2tfidf(self._text)
 
-		print(self._vectors[1])
-		print(self._vectors[2])
 
 	def get_text(self):
 		return self._text
