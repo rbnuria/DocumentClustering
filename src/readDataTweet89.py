@@ -22,6 +22,10 @@ class ReaderTweet89(Reader):
 
 	def read_data(self):
 		self._text = []
+
+		print(self._text[1])
+		print(self._text[2])
+
 		self._cluster = []
 
 		print("Read data...")
@@ -58,6 +62,9 @@ class ReaderTweet89(Reader):
 		else:
 			self._text = preprocessing.apply_stemmer_stopword(self._text)
 			self._vectors = preprocessing.word2tfidf(self._text)
+
+		print(self._vectors[1])
+		print(self._vectors[2])
 
 	def get_text(self):
 		return self._text
