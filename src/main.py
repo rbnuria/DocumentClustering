@@ -24,7 +24,7 @@ if __name__ == "__main__":
 	#data = ReaderReutersR52("../data/r52-train-stemmed.txt", "../data/r52-test-stemmed.txt", "embeddings", embeddings, vocabulary)
 
 	#tf-idf
-	data_2 = ReaderTweet89("../data/Tweet", "tfidf")
+	data_2 = ReaderTweet89("../data/20ng.txt", "tfidf")
 	
 	tweets = data.get_vectors()
 	tweets_2 = data_2.get_vectors()

@@ -52,6 +52,8 @@ class ReaderTweet89(Reader):
 
 				self._data = preprocessing.padding_truncate(self._data, max_length)
 
+
+			self._data = preprocessing.delete_stopwords(self._data)
 			self._vectors = np.array(preprocessing.word2embeddings(self._data, self._embedding, self._vocabulary, self._concatenate))
 		else:
 			self._vectors = preprocessing.word2tfidf(self._text)
