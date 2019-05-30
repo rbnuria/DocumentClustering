@@ -30,12 +30,12 @@ if __name__ == "__main__":
 		#data = ReaderTweet89("../data/20ng.txt", "embeddings", embeddings, vocabulary, True)
 
 		#Embeddings-media
-		#data = ReaderTweet89("../data/20ng.txt", "embeddings", embeddings, vocabulary)
+		data = ReaderTweet89("../data/20ng.txt", "embeddings", embeddings, vocabulary)
 		#data = ReaderReutersR52("../data/r52-train-all-terms.txt", "../data/r52-test-all-terms.txt", "embeddings", embeddings=embeddings, vocab = vocabulary)
 
 		#tf-idf
 		#data = ReaderTweet89("../data/20ng.txt", "tfidf")
-		data = ReaderReutersR52("../data/r52-train-all-terms.txt", "../data/r52-test-all-terms.txt","tfidf")
+		#data = ReaderReutersR52("../data/r52-train-all-terms.txt", "../data/r52-test-all-terms.txt","tfidf")
 
 
 		tweets = data.get_vectors()
@@ -49,7 +49,7 @@ if __name__ == "__main__":
 
 		#kmeans
 		#1234567
-		kmeans = KMeans(n_clusters = 52, random_state = seeds[i], n_init = 10, max_iter = 300).fit(tweets)
+		kmeans = KMeans(n_clusters = 20, random_state = seeds[i], n_init = 10, max_iter = 300).fit(tweets)
 		
 		#AGL-EUC-WARD
 		#AGL_EUC1 = AgglomerativeClustering(n_clusters=20, affinity="euclidean", linkage="ward").fit(tweets)
