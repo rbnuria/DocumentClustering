@@ -43,13 +43,13 @@ def word2tfidf(data):
 
 	return X
 
-def apply_stemmer(data):
+def apply_stemmer_stopword(data):
 	ps = PorterStemmer()
 
 	stemmed_data = []
 
 	for sentence in data:
-		sentence_tokenized = word_tokenize(sentence)
+		sentence_tokenized = delete_stop_words_sentence(word_tokenize(sentence))
 		new_sentence = ""
 		for word in sentence_tokenized:
 			new_sentence += " " + ps.stem(word)
@@ -70,6 +70,12 @@ def delete_stopwords(tokenized_data):
 
 	return np.array(new_data)
 
+def delete_stopwords_sentence(tokenized_sentence):
+	stop_words = stopwords.words('english')
+
+	new_sentence = [word for word in tokenized_sentence if word not in stop_words]
+
+	return new_sentence
 
 def read_embeddings(path_embeddings):
 	fin = io.open(path_embeddings, 'r', encoding='utf-8', newline='\n', errors='ignore')
