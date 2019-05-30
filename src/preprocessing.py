@@ -6,6 +6,8 @@ from nltk import word_tokenize
 import io
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
+from nltk.corpus import stopwords
+
 
 def tokenize(text):
 	return word_tokenize(text)
@@ -39,6 +41,14 @@ def word2tfidf(data):
 	print(X.shape)
 
 	return X
+
+def delete_stopwords(tokenized_data):
+	stop_words = stopwords.words('english')
+
+	new_data = [word for word in tokenized_words if word not in stop_words]
+
+	return new_data
+
 
 def read_embeddings(path_embeddings):
 	fin = io.open(path_embeddings, 'r', encoding='utf-8', newline='\n', errors='ignore')

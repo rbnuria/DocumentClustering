@@ -57,6 +57,8 @@ class ReaderReutersR52(Reader):
 			for sentence in self._text:
 				self._data.append(preprocessing.tokenize(sentence))
 
+			self._data = preprocessing.delete_stopwords(self._data)
+
 			self._vectors = np.array(preprocessing.word2embeddings(self._data, self._embedding, self._vocabulary, self._concatenate))
 		else:
 			self._vectors = preprocessing.word2tfidf(self._text)
