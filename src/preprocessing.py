@@ -58,6 +58,8 @@ def apply_stemmer_stopword(data):
 
 	stemmed_data.append(new_sentence)
 
+	return data
+
 
 def delete_stopwords(tokenized_data):
 	stop_words = stopwords.words('english')
