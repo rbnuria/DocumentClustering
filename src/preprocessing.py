@@ -38,7 +38,14 @@ def word2tfidf(data):
 
 	X = vectorizer.fit_transform(data)
 
-	devolver = [score for word,score in X]
+
+
+	for col in X.nonzero()[1]:
+		document = []
+		for i in range(0, data.shape[0])
+			document.append(X[i, col])
+    	
+    	devolver.append(document)
 
 	return devolver
 
