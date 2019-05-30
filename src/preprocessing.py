@@ -66,8 +66,6 @@ def apply_stemmer_stopword(data):
 		for word in sentence_tokenized:
 			new_sentence += " " + ps.stem(word)
 
-		new_sentence += "\n"
-
 		stemmed_data.append(new_sentence)
 
 	return stemmed_data
