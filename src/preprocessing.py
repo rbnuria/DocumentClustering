@@ -57,13 +57,11 @@ def get_top_n_words(corpus, n=None):
 def apply_stemmer_stopword(data):
 	ps = PorterStemmer()
 
-	data = get_top_n_words(data, 2000)
-	print(data[1])
-
 	stemmed_data = []
 
 	for sentence in data:
 		sentence_tokenized = delete_stopwords_sentence(word_tokenize(sentence))
+		sentence_tokenized = delete_uncommon_sentence(sentence_tokenized)
 		new_sentence = ""
 		for word in sentence_tokenized:
 			new_sentence += " " + ps.stem(word)
@@ -74,6 +72,12 @@ def apply_stemmer_stopword(data):
 
 	return stemmed_data
 
+def delete_uncommon_sentence(sentence):
+	common_words = get_top_n_words(data, 2000)
+
+	new_sentence = [word for word in tokenized_sentence if word in common_words]
+
+	return new_sentence
 
 def delete_stopwords(tokenized_data):
 	stop_words = stopwords.words('english')
