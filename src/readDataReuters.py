@@ -32,7 +32,7 @@ class ReaderReutersR52(Reader):
 				tokens = line.split("\t")
 
 				self._text.append(tokens[1])
-				self._cluster.append(tokens[0])
+				self._cluster.append(int(tokens[0]))
 
 
 		with open(self._path_test, 'r') as file_:
@@ -40,7 +40,7 @@ class ReaderReutersR52(Reader):
 				tokens = line.split("\t")
 
 				self._text.append(tokens[1])
-				self._cluster.append(tokens[0])
+				self._cluster.append(int(tokens[0]))
 
 		self._text = np.array(self._text)
 		self._cluster = np.array(self._cluster)
