@@ -49,7 +49,7 @@ def apply_stemmer_stopword(data):
 	stemmed_data = []
 
 	for sentence in data:
-		sentence_tokenized = delete_stop_words_sentence(word_tokenize(sentence))
+		sentence_tokenized = delete_stopwords_sentence(word_tokenize(sentence))
 		new_sentence = ""
 		for word in sentence_tokenized:
 			new_sentence += " " + ps.stem(word)
