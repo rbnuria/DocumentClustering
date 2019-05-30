@@ -38,7 +38,8 @@ def word2tfidf(data):
 
 	X = vectorizer.fit_transform(data)
 
-
+	devolver = []
+	
 	for col in X.nonzero()[1]:
 		document = []
 		
