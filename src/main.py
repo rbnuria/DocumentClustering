@@ -44,14 +44,14 @@ if __name__ == "__main__":
 
 	#writer.write(labels_true)
 
-	tweets = preprocessing.normalize(tweets)
+	#tweets = preprocessing.normalize(tweets)
 
 	print("Etiquetas reales: ", labels_true)
 
 	#Aplicamos kmeans
 	kmeans = KMeans(n_clusters = 20, random_state = 1234567, n_init = 10, max_iter = 100).fit(tweets)
 
-	agglomerative = AgglomerativeClustering(n_clusters = 20, affinity = "cosine", linkage = "complete")
+	agglomerative = AgglomerativeClustering(n_clusters = 20, affinity = "cosine", linkage = "complete").fit(tweets)
 
 	print("Etiquetas predichas: ", agglomerative.labels_)
 	
