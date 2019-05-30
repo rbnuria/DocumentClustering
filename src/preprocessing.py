@@ -55,7 +55,7 @@ def apply_stemmer_stopword(data):
 	ps = PorterStemmer()
 
 	data = get_top_n_words(data, 2000)
-	data = data[1,:]
+	data = data[1]
 
 	stemmed_data = []
 
