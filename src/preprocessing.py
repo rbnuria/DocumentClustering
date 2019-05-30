@@ -45,9 +45,13 @@ def word2tfidf(data):
 def delete_stopwords(tokenized_data):
 	stop_words = stopwords.words('english')
 
-	new_data = [word for word in tokenized_data if word not in stop_words]
+	new_data = []
 
-	return new_data
+	for sentence in tokenized_data:
+		new_sentence = [word for word in sentence if word not in stop_words]
+		new_data.append(new_sentence)
+
+	return np.array(new_data)
 
 
 def read_embeddings(path_embeddings):

@@ -45,8 +45,6 @@ class ReaderReutersR52(Reader):
 		self._text = np.array(self._text)
 		self._cluster = np.array(self._cluster)
 
-		print(self._cluster[0])
-
 	def prepare_data(self):
 		print("Prepare data...")
 

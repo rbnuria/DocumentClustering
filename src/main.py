@@ -27,10 +27,8 @@ if __name__ == "__main__":
 	#data = ReaderTweet89("../data/Tweet", "tfidf")
 	
 	tweets = data.get_vectors()
-
-	print(tweets[1])
-
 	labels_true = data.get_clusters()
+
 	print("Etiquetas reales: ", labels_true)
 
 	#Aplicamos kmeans
