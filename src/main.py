@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
 	#Embeddings-media
 	#data = ReaderTweet89("../data/20ng.txt", "embeddings", embeddings, vocabulary)
-	data = ReaderReutersR52("../data/r52-train-stemmed.txt", "../data/r52-test-stemmed.txt", "embeddings", embeddings, vocabulary)
+	data = ReaderReutersR52("../data/r52-train-all-terms.txt", "../data/r52-test-all-terms.txt", "embeddings", embeddings, vocabulary)
 
 	#tf-idf
 	#data = ReaderTweet89("../data/20ng.txt", "tfidf")
