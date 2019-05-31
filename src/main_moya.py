@@ -22,7 +22,7 @@ if __name__ == "__main__":
 	for i in range(10):
 		t1 = time.time()
 
-		#embeddings, vocabulary = preprocessing.read_embeddings("../crawl-300d-2M.vec")
+		embeddings, vocabulary = preprocessing.read_embeddings("../crawl-300d-2M.vec")
 
 		#Leemos los datos
 
