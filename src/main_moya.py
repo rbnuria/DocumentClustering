@@ -30,11 +30,11 @@ if __name__ == "__main__":
 		#data = ReaderTweet89("../data/20ng.txt", "embeddings", embeddings, vocabulary, True)
 
 		#Embeddings-media
-		#data = ReaderTweet89("../data/20ng.txt", "embeddings", embeddings, vocabulary)
+		data = ReaderTweet89("../data/Tweet", "embeddings", embeddings, vocabulary)
 		#data = ReaderReutersR52("../data/r52-train-all-terms.txt", "../data/r52-test-all-terms.txt", "embeddings", embeddings=embeddings, vocab = vocabulary)
 
 		#tf-idf
-		data = ReaderTweet89("../data/Tweet", "tfidf")
+		#data = ReaderTweet89("../data/Tweet", "tfidf")
 		#data = ReaderReutersR52("../data/r52-train-all-terms.txt", "../data/r52-test-all-terms.txt","tfidf")
 
 
