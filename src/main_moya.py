@@ -49,7 +49,7 @@ if __name__ == "__main__":
 
 		#kmeans
 		#1234567
-		kmeans = KMeans(n_clusters = 20, random_state = seeds[i], n_init = 10, max_iter = 300).fit(tweets)
+		kmeans = KMeans(n_clusters = 89, random_state = seeds[i], n_init = 10, max_iter = 300).fit(tweets)
 		
 		#AGL-EUC-WARD
 		#AGL_EUC1 = AgglomerativeClustering(n_clusters=20, affinity="euclidean", linkage="ward").fit(tweets)
